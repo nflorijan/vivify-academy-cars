@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarsController;
+use App\Models\Car;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,10 @@ Route::get('/', function () {
     $age = 29;
     return view('welcome', compact(['name', 'age']));
 });
+
+Route::get('/cars', [CarsController::class, 'index']);
+
+Route::get('/cars/{car}', [CarsController::class, 'show'])->name('car');
 
 Route::get('/about', function () {
     return view('about');
